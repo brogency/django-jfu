@@ -36,4 +36,4 @@ def jfu(
 
     t = loader.get_template( template_name )
 
-    return t.render( context )
+    return t.render( context.flatten() )
