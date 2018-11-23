@@ -1,4 +1,5 @@
 from django.template.context_processors import csrf
+from django.template.loader import render_to_string
 from django.urls import reverse
 from django.template import Library, Context, loader
 
@@ -34,6 +35,4 @@ def jfu(
     # to generate the CSRF token.
     context.update( csrf( context.get('request') ) )
 
-    t = loader.get_template( template_name )
-
-    return t.render( Context( context ) )
+    return render_to_string(template_name, context)
